@@ -1,4 +1,4 @@
-import zipcode as zp #fast but had a lot of misses
+import zipcode as zp
 import pandas as pd
 import gmplot
 from pypostalcode import PostalCodeDatabase
