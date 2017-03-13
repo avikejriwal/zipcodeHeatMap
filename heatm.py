@@ -23,6 +23,7 @@ count = 0
 
 zcdb = ZipCodeDatabase()
 
+#not all US zipcodes are in the first library I used
 for z in usCodes:
     r = z[:5]
     while len(r) < 5:
@@ -42,6 +43,7 @@ for z in usCodes:
 
 pcdb = PostalCodeDatabase()
 
+#parse Canada codes
 for z in canCodes:
     r =  z[:3].upper()
     try:
@@ -49,11 +51,11 @@ for z in canCodes:
         lat.append(loc.latitude)
         lng.append(loc.longitude)
     except:
-        count +=1 #only like 3 zipcodes
+        count +=1 
+        
+print count #number of misses; for a list of 500 records this is generally trivial
 
-print count #number of misses
-
-#plot on Google Maps
+#plot on a Google Maps HTML page
 gmap = gmplot.GoogleMapPlotter(39.0558, -84.311, 20)
 gmap.heatmap(lat, lng)
 gmap.draw('mymap.html')
